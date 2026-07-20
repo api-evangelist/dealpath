@@ -1,0 +1,31 @@
+generated: '2026-07-18'
+method: searched
+source: https://api.dealpath.com/ (HTTP 401 challenge) + https://dealpath.stoplight.io/docs/dealpath-api
+docs: https://dealpath.stoplight.io/docs/dealpath-api
+summary:
+  types:
+  - http
+  api_key_in: []
+  oauth2_flows: []
+  notes: >-
+    The Dealpath API requires a bearer authorization token issued by Dealpath;
+    the live 401 challenge from https://api.dealpath.com/ returns
+    "No authorization token found in the request header. Please obtain an auth
+    token from Dealpath." Tokens are provisioned by Dealpath (not self-service).
+    Note: SSO to the Dealpath application (distinct from API auth) supports
+    Okta, OneLogin, Microsoft Azure and SAML 2.0.
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: >-
+    Authorization: Bearer <token> header on every request. The token is obtained
+    from Dealpath (customer-provisioned); there is no public OAuth authorization
+    endpoint.
+  sources:
+  - https://api.dealpath.com/ (401 challenge)
+  - https://dealpath.stoplight.io/docs/dealpath-api
+evidence:
+- source: https://api.dealpath.com/
+  status: 401
+  detail: 'message: No authorization token found in the request header. Please obtain an auth token from Dealpath.'
