@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of /.well-known/* on Dealpath hosts
+notes: >-
+  The API host (api.dealpath.com) gates the entire path space behind the bearer
+  auth wall, so every /.well-known/ path returns 401 (not a published discovery
+  document). The marketing host (www.dealpath.com) returns 404 for the same
+  paths. No usable well-known discovery documents were found. Absence is a valid,
+  recorded result.
+hosts:
+- host: https://api.dealpath.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+- host: https://www.dealpath.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404

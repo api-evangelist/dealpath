@@ -1,0 +1,48 @@
+generated: '2026-07-18'
+method: searched
+source: >-
+  https://dealpath.stoplight.io/docs/dealpath-api + live behavior observed from
+  https://api.dealpath.com/
+docs: https://dealpath.stoplight.io/docs/dealpath-api
+notes: >-
+  Cross-cutting request/response semantics for the Dealpath REST API. Captured
+  from the live API challenge and the published Stoplight reference. Fields left
+  unset (idempotency, pagination params) were not verifiable without an
+  authenticated token or a machine-readable OpenAPI export, so they are recorded
+  as unknown rather than asserted.
+authentication:
+  style: bearer-token
+  header: Authorization
+  format: Bearer <token>
+  cross_ref: authentication/dealpath-authentication.yml
+transport:
+  base_url: https://api.dealpath.com
+  tls: TLSv1.3
+  hsts: true
+  hsts_max_age: 31622400
+  server: nginx + Express
+  content_type: application/json
+rate_limiting:
+  signaled: true
+  style: header
+  headers:
+  - X-RateLimit-Limit
+  - X-RateLimit-Remaining
+  - X-RateLimit-Reset
+  cross_ref: rate-limits/dealpath-rate-limits.yml
+idempotency:
+  documented: unknown
+  note: No idempotency-key header was verifiable from the public surface; not asserted.
+pagination:
+  style: unknown
+  note: Not verifiable without an authenticated response or OpenAPI export.
+versioning:
+  scheme: unknown
+  note: >-
+    API reference is published as a versioned Stoplight project (dealpath-api);
+    the concrete version selector (path vs. Accept header) was not verifiable
+    from the public surface.
+error_envelope:
+  format: json
+  observed_shape: '{ "message": "<human readable error>" }'
+  source: https://api.dealpath.com/ 401 body

@@ -1,20 +1,63 @@
 aid: dealpath
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dealpath.png
 name: Dealpath
-description: Dealpath is a company surfaced as a portfolio company of 8vc and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Dealpath is an AI-powered deal management platform for commercial real estate
+  investing, used by 300+ institutional firms to centralize deal data, automate
+  workflows, and surface analytics across the full investment lifecycle from
+  sourcing and pipeline management through underwriting, due diligence, IC
+  approval, close, and portfolio insights. Its product areas include market
+  tracking and comps, Dealpath Connect deal sourcing, pipeline visibility, deal
+  execution, reporting dashboards, relationship/CRM management, and Dealpath AI.
+  Dealpath exposes a bearer-token REST API at api.dealpath.com (documented on
+  Stoplight) so customers can programmatically feed opportunities into their
+  pipeline and establish bidirectional data flows with other business systems.
 url: https://raw.githubusercontent.com/api-evangelist/dealpath/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 8vc
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-live-api-surface
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Real Estate
+- PropTech
+- Deal Management
+- Commercial Real Estate
+- Investment Management
+- Real Estate Technology
+- API
+apis:
+- name: Dealpath API
+  description: >-
+    Dealpath's REST API for programmatic access to deals, pipeline, and
+    portfolio data. Bearer-token authentication (token provisioned by Dealpath);
+    responses are JSON and advertise X-RateLimit-* headers.
+  humanURL: https://dealpath.stoplight.io/docs/dealpath-api
+  baseURL: https://api.dealpath.com
+  properties:
+  - type: Authentication
+    url: authentication/dealpath-authentication.yml
+  - type: Conventions
+    url: conventions/dealpath-conventions.yml
+  - type: RateLimits
+    url: rate-limits/dealpath-rate-limits.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +66,40 @@ maintainers:
 common:
 - type: Website
   url: https://dealpath.com
+- type: DeveloperPortal
+  url: https://dealpath.stoplight.io/docs/dealpath-api
+- type: Documentation
+  url: https://dealpath.stoplight.io/docs/dealpath-api
+- type: APIReference
+  url: https://dealpath.stoplight.io/docs/dealpath-api
+- type: Pricing
+  url: https://www.dealpath.com/plans/
+- type: Login
+  url: https://app.dealpath.com/account/login
+- type: SignUp
+  url: https://www.dealpath.com/request-demo/
+- type: TermsOfService
+  url: https://www.dealpath.com/tos/
+- type: PrivacyPolicy
+  url: https://www.dealpath.com/privacy/
+- type: Blog
+  url: https://www.dealpath.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/dealpath
+- type: Authentication
+  url: authentication/dealpath-authentication.yml
+- type: Conventions
+  url: conventions/dealpath-conventions.yml
+- type: RateLimits
+  url: rate-limits/dealpath-rate-limits.yml
+- type: DomainSecurity
+  url: security/dealpath-domain-security.yml
+- type: WellKnown
+  url: well-known/dealpath-well-known.yml
+- type: LLMsTxt
+  url: llms/dealpath-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

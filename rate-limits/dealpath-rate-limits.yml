@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: searched
+source: live response headers observed from https://api.dealpath.com/ (HTTP 401)
+notes: >-
+  Dealpath's API advertises rate-limit state on every response via standard
+  X-RateLimit-* headers (observed live on the unauthenticated 401 challenge;
+  authenticated limits may differ per plan/token).
+signaling:
+  style: header
+  headers:
+  - name: X-RateLimit-Limit
+    meaning: Maximum requests permitted in the current window
+    observed_value: 100
+  - name: X-RateLimit-Remaining
+    meaning: Requests remaining in the current window
+    observed_value: 98
+  - name: X-RateLimit-Reset
+    meaning: Unix epoch timestamp when the window resets
+    observed_value: 1784424777
+rate_limits:
+- name: default
+  limit_count: 100
+  window: unspecified-fixed-window
+  scope: per-caller
+  source: X-RateLimit-Limit response header
