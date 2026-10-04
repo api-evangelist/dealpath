@@ -47,9 +47,12 @@ x-tier-reason: enriched-from-live-api-surface
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-18'
+x-docs-platform: stoplight
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-25
 tags:
 - Company
-- Real-Estate
+- Real Estate
 - PropTech
 - Deal Management
 - Commercial Real Estate
@@ -64,6 +67,7 @@ tags_raw:
 - Investment Management
 - Real Estate Technology
 - API
+- Real-Estate
 apis:
 - name: Dealpath API
   description: >-
